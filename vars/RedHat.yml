@@ -31,5 +31,5 @@ __php_fpm_pool_conf_path: "/etc/php-fpm.d/www.conf"
 __php_fpm_pool_group: nginx
 __php_fpm_pool_user: nginx
 
-__php_fpm_socket_owner: root
-__php_fpm_socket_group: root
+__php_fpm_pool_socket_owner: root
+__php_fpm_pool_socket_group: root
