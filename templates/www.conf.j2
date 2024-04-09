@@ -3,13 +3,13 @@
 [{{ item.pool_name | mandatory }}]
 listen = {{ item.pool_listen | mandatory }}
 listen.allowed_clients = {{ item.pool_listen_allowed_clients | default('127.0.0.1', true) }}
-{% if item.php_fpm_pool_user | default(__php_fpm_pool_user) %}
-user = {{ item.php_fpm_pool_user | default(__php_fpm_pool_user) }}
-group = {{ item.php_fpm_pool_group | default(__php_fpm_pool_group) }}
+{% if item.pool_user | default(__php_fpm_pool_user) %}
+user = {{ item.pool_user | default(__php_fpm_pool_user) }}
+group = {{ item.pool_group | default(__php_fpm_pool_group) }}
 {% endif %}
-{% if item.php_fpm_socket_owner | default(__php_fpm_socket_owner) %}
-listen.owner = {{ item.php_fpm_socket_owner | default(__php_fpm_socket_owner) }}
-listen.group = {{ item.php_fpm_socket_owner | default(__php_fpm_socket_group) }}
+{% if item.pool_socket_owner | default(__php_fpm_socket_owner) %}
+listen.owner = {{ item.pool_socket_owner | default(__php_fpm_pool_socket_owner) }}
+listen.group = {{ item.pool_socket_owner | default(__php_fpm_pool_socket_group) }}
 {% endif %}
 
 pm = {{ item.pool_pm | default('dynamic', true) }}
