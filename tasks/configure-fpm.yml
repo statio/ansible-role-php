@@ -12,12 +12,26 @@
 - name: Define php_fpm_pool_user.
   set_fact:
     php_fpm_pool_user: "{{ __php_fpm_pool_user }}"
-  when: php_fpm_pool_user is not defined
+  loop: "{{ php_fpm_pools }}"
+  when: item.php_fpm_pool_user is not defined
 
 - name: Define php_fpm_pool_group.
   set_fact:
     php_fpm_pool_group: "{{ __php_fpm_pool_group }}"
-  when: php_fpm_pool_group is not defined
+  loop: "{{ php_fpm_pools }}"
+  when: item.php_fpm_pool_group is not defined
+
+- name: Define php_fpm_socket_owner.
+  set_fact:
+    php_fpm_pool_user: "{{ __php_fpm_socket_owner }}"
+  loop: "{{ php_fpm_pools }}"
+  when: item.php_fpm_socket_owner is not defined
+
+- name: Define php_fpm_socket_group.
+  set_fact:
+    php_fpm_pool_user: "{{ __php_fpm_socket_group }}"
+  loop: "{{ php_fpm_pools }}"
+  when: item.php_fpm_socket_group is not defined
 
 - name: Stat php_fpm_pool_conf_path
   stat:
