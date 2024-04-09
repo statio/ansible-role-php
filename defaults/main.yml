@@ -39,6 +39,10 @@ php_fpm_pools:
     pool_template: www.conf.j2
     pool_listen: "{{ php_fpm_listen }}"
     pool_listen_allowed_clients: "{{ php_fpm_listen_allowed_clients }}"
+    php_fpm_pool_user: www-data
+    php_fpm_pool_group: www-data
+    php_fpm_socket_owner: nobody
+    php_fpm_socket_group: nobody
     pool_pm: dynamic
     pool_pm_max_children: "{{ php_fpm_pm_max_children }}"
     pool_pm_start_servers: "{{ php_fpm_pm_start_servers }}"
