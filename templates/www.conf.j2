@@ -7,9 +7,9 @@ listen.allowed_clients = {{ item.pool_listen_allowed_clients | default('127.0.0.
 user = {{ item.pool_user | default(__php_fpm_pool_user) }}
 group = {{ item.pool_group | default(__php_fpm_pool_group) }}
 {% endif %}
-{% if item.pool_socket_owner | default(__php_fpm_socket_owner) %}
+{% if item.pool_socket_owner | default(__php_fpm_pool_socket_owner) %}
 listen.owner = {{ item.pool_socket_owner | default(__php_fpm_pool_socket_owner) }}
-listen.group = {{ item.pool_socket_owner | default(__php_fpm_pool_socket_group) }}
+listen.group = {{ item.pool_socket_group | default(__php_fpm_pool_socket_group) }}
 {% endif %}
 
 pm = {{ item.pool_pm | default('dynamic', true) }}
