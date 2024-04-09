@@ -13,25 +13,25 @@
   set_fact:
     php_fpm_pool_user: "{{ __php_fpm_pool_user }}"
   loop: "{{ php_fpm_pools }}"
-  when: item.php_fpm_pool_user is not defined
+  when: item.pool_user is not defined
 
 - name: Define php_fpm_pool_group.
   set_fact:
     php_fpm_pool_group: "{{ __php_fpm_pool_group }}"
   loop: "{{ php_fpm_pools }}"
-  when: item.php_fpm_pool_group is not defined
+  when: item.pool_group is not defined
 
 - name: Define php_fpm_socket_owner.
   set_fact:
-    php_fpm_pool_user: "{{ __php_fpm_socket_owner }}"
+    php_fpm_pool_socket_owner: "{{ __php_fpm_pool_socket_owner }}"
   loop: "{{ php_fpm_pools }}"
-  when: item.php_fpm_pool_socket_owner is not defined
+  when: item.pool_socket_owner is not defined
 
 - name: Define php_fpm_socket_group.
   set_fact:
-    php_fpm_pool_user: "{{ __php_fpm_socket_group }}"
+    php_fpm_pool_socket_group: "{{ __php_fpm_pool_socket_group }}"
   loop: "{{ php_fpm_pools }}"
-  when: item.php_fpm_pool_socket_group is not defined
+  when: item.pool_socket_group is not defined
 
 - name: Stat php_fpm_pool_conf_path
   stat:
